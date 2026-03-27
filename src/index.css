@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-yellow: #ffb800; /* Yellow from design */
+  --color-brand-orange: #ff9d00;
+  --color-brand-dark: #333333;
+  --color-background: #ffffff;
+
+  --font-family-sans: "Inter", system-ui, sans-serif;
+
+  /* Increased base font sizes for accessibility */
+  --text-base: 1.125rem; /* 18px */
+  --text-lg: 1.25rem; /* 20px */
+  --text-xl: 1.5rem; /* 24px */
+}
+
+@layer base {
+  body {
+    @apply text-brand-dark bg-background font-sans antialiased;
+    font-size: 18px; /* Accessible default */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-brand-yellow text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-brand-orange hover:shadow-lg transition-all text-lg;
+    /* Ensuring large touch targets */
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+/* WYSIWYG Editor (React Quill) */
+.quill-wrapper .ql-toolbar {
+  border: none !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  background: #f9fafb;
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.quill-wrapper .ql-container {
+  border: none !important;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #374151;
+  min-height: 120px;
+}
+
+.quill-wrapper .ql-editor {
+  min-height: 120px;
+  padding: 0.75rem 1rem;
+}
+
+.quill-wrapper .ql-editor.ql-blank::before {
+  font-style: normal;
+  color: #9ca3af;
+  font-weight: 500;
+}
