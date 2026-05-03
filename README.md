@@ -87,8 +87,6 @@ Cuando el usuario visualiza su propio perfil puede:
 - Crear o modificar su BIO.
 - Subir avatar desde una imagen de su computadora.
 
-Ya no se pide escribir una URL de avatar en la interfaz.
-
 ### Colecciones
 
 - En la vista de perfil solo se muestran colecciones.
