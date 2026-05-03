@@ -8,6 +8,8 @@ import RecipeEditor from './pages/RecipeEditor'
 import MyRecipes from './pages/MyRecipes'
 import Categories from './pages/Categories'
 import RecipeMedia from './pages/RecipeMedia'
+import Profile from './pages/Profile'
+import ChefLevels from './pages/ChefLevels'
 import './index.css'
 import { ToastProvider } from './components/Toast'
 
@@ -31,6 +33,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/recipe/:id" element={<RecipeDetail />} />
+        <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/chef-levels" element={<ChefLevels />} />
         
         {/* Protected Routes */}
         <Route path="/create" element={<ProtectedRoute><RecipeEditor /></ProtectedRoute>} />

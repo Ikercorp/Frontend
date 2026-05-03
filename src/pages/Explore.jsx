@@ -4,6 +4,7 @@ import recipeImg from '../assets/recipe_placeholder.png';
 import { api } from '../api/axios';
 import tomateImg from '../assets/tomate.png';
 import customLogo from '../assets/logo.png';
+import MyProfileLink from '../components/MyProfileLink';
 
 
 
@@ -199,6 +200,7 @@ export default function Explore() {
             {localStorage.getItem('access_token') ? (
               <>
                 <Link to="/my-recipes" className="px-6 py-2.5 bg-white text-[#ffb800] font-black text-lg md:text-xl rounded-full shadow hover:bg-gray-50 transition-colors">Mis recetas</Link>
+                <MyProfileLink className="hidden md:block" />
                 <button onClick={() => { localStorage.removeItem('access_token'); window.location.href='/login'; }} className="px-6 py-2.5 bg-white text-red-500 font-black text-lg md:text-xl rounded-full shadow hover:bg-gray-50 transition-colors border-2 border-red-100 hidden md:block">Salir</button>
               </>
             ) : (

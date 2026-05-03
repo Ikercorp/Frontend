@@ -5,6 +5,8 @@ import tomateImg from '../assets/tomate.png';
 import recipeImg from '../assets/recipe_placeholder.png';
 import customLogo from '../assets/logo.png';
 import { useToast } from '../components/Toast';
+import MyProfileLink from '../components/MyProfileLink';
+import SaveRecipeToCollection from '../components/SaveRecipeToCollection';
 
 
 
@@ -98,6 +100,7 @@ export default function RecipeDetail() {
             {isAuth ? (
               <>
                 <Link to="/my-recipes" className="px-6 py-2.5 bg-white text-[#ffb800] font-black text-lg md:text-xl rounded-full shadow hover:bg-gray-50 transition-colors">Mis recetas</Link>
+                <MyProfileLink className="hidden md:block" />
                 <button onClick={() => { localStorage.removeItem('access_token'); window.location.href='/login'; }} className="px-6 py-2.5 bg-white text-red-500 font-black text-lg md:text-xl rounded-full shadow hover:bg-gray-50 transition-colors border-2 border-red-100 hidden md:block">Salir</button>
               </>
             ) : (
@@ -117,7 +120,7 @@ export default function RecipeDetail() {
           <div className="mb-10">
             <h1 className="text-5xl md:text-7xl font-black text-[#1a2e35] mb-4 tracking-tight">{recipe.title}</h1>
             <div className="flex flex-wrap items-center gap-2 text-lg font-bold text-gray-700">
-              <p>Publicado por <span className="text-black">{authorName}</span> — {new Date(recipe.published_at || recipe.created_at).toLocaleDateString()}</p>
+              <p>Publicado por <Link to={`/profile/${recipe.author?.id}`} className="text-black hover:text-green-700 hover:underline">{authorName}</Link> — {new Date(recipe.published_at || recipe.created_at).toLocaleDateString()}</p>
               <span className="ml-2 bg-[#fdf0d5] text-[#d48c00] px-4 py-1.5 rounded-full text-sm uppercase tracking-wider">
                 {categoryName}
               </span>
@@ -249,6 +252,8 @@ export default function RecipeDetail() {
               <Link to="/explore" className="w-full bg-[#f8f5f0] hover:bg-gray-200 text-gray-800 font-bold text-center text-lg py-4 rounded-[1.5rem] transition-colors">
                 Volver al feed
               </Link>
+
+              <SaveRecipeToCollection recipeId={id} />
               
               {/* Leave Review Form */}
               <form onSubmit={handleSubmitReview} className="bg-white border-2 border-[#f0f0f0] rounded-[2rem] p-8 shadow-sm flex flex-col gap-4">

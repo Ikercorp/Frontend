@@ -14,6 +14,7 @@ function MyRecipes() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState('');
+  const [userId, setUserId] = useState(null);
   const navigate = useNavigate();
   const toast = useToast();
 
@@ -30,6 +31,7 @@ function MyRecipes() {
         // Fetch user profile
         const userRes = await api.get('/auth/me');
         setUserName(userRes.data?.data?.name || userRes.data?.name || 'Chef');
+        setUserId(userRes.data?.data?.id || userRes.data?.id || null);
 
         // Fetch user recipes
         const res = await api.get('/recipes?mine=1');
@@ -115,6 +117,7 @@ function MyRecipes() {
           </div>
           <div className="flex gap-4">
             <Link to="/explore" className="px-6 py-2.5 outline outline-2 outline-white text-white font-black text-lg md:text-xl rounded-full hover:bg-white/10 transition-colors hidden sm:block">Explorar Recetas</Link>
+            {userId && <Link to={`/profile/${userId}`} className="px-6 py-2.5 bg-white text-[#1e8b4d] font-black text-lg md:text-xl rounded-full shadow hover:bg-gray-50 transition-colors hidden md:block">Mi perfil</Link>}
             <button onClick={handleLogout} className="px-6 py-2.5 bg-white text-red-500 font-black text-lg md:text-xl rounded-full shadow hover:bg-gray-50 transition-colors border-2 border-red-100">Cerrar Sesión</button>
           </div>
         </div>

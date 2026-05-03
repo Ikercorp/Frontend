@@ -4,6 +4,7 @@ import { api } from '../api/axios';
 import tomateImg from '../assets/tomate.png';
 import customLogo from '../assets/logo.png';
 import { useToast } from '../components/Toast';
+import MyProfileLink from '../components/MyProfileLink';
 
 
 
@@ -60,6 +61,7 @@ const Categories = () => {
 
           {/* User Actions */}
           <nav className="flex items-center gap-3">
+            <MyProfileLink className="hidden md:block" />
              <Link to="/login" className="hidden sm:inline-block px-5 py-2.5 rounded-full font-bold text-orange-900 bg-white/40 hover:bg-white/60 transition-colors">
               Ingresar
             </Link>

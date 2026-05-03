@@ -5,6 +5,7 @@ import { api } from '../api/axios';
 import tomateImg from '../assets/tomate.png';
 import customLogo from '../assets/logo.png';
 import { useToast } from '../components/Toast';
+import MyProfileLink from '../components/MyProfileLink';
 
 
 
@@ -68,6 +69,7 @@ export default function Register() {
           
           {/* Navigation Buttons (Pill style) */}
           <div className="flex gap-4">
+            <MyProfileLink className="hidden md:block" />
             <Link to="/login" className="px-6 py-2.5 bg-white text-[#ffb800] font-black text-lg md:text-xl rounded-full shadow hover:bg-gray-50 transition-colors">
               Ingresar
             </Link>
