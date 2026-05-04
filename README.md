@@ -69,47 +69,23 @@ password123
 
 ## Novedades Agregadas
 
-### Perfil publico y propio
+### Perfil
 
-- Vista `/profile/{userId}` para ver el perfil de cualquier usuario.
-- Bio publica del usuario.
-- Avatar del usuario.
-- Conteo de seguidores y siguiendo.
-- Recetas publicadas del usuario.
-- Colecciones del usuario.
-- Boton de seguir/dejar de seguir cuando se visita otro perfil.
-
-### Edicion de perfil
-
-Cuando el usuario visualiza su propio perfil puede:
-
-- Modificar su nombre.
-- Crear o modificar su BIO.
-- Subir avatar desde una imagen de su computadora.
+Se agrego la vista `/profile/{userId}` para consultar el perfil publico de cualquier usuario. Desde esta pantalla se muestra BIO, avatar, seguidores, siguiendo, recetas publicadas, colecciones y nivel del chef. Cuando el usuario visualiza su propio perfil puede modificar su nombre, editar su BIO y subir un avatar directamente desde su computadora, sin escribir una URL manual.
 
 ### Colecciones
 
-- En la vista de perfil solo se muestran colecciones.
-- La administracion de colecciones se mueve a la vista de receta.
-- Desde una receta publicada el usuario puede:
-  - Guardarla en una coleccion existente.
-  - Crear una coleccion nueva.
-  - Guardar la receta actual sin escribir IDs manuales.
-  - Elegir si la coleccion nueva sera publica en el perfil.
-
-### Boton Mi Perfil
-
-El boton `Mi perfil` se agrego en las cabeceras principales para que el usuario pueda volver a su perfil desde las vistas del proyecto cuando esta autenticado.
+Las colecciones se muestran en el perfil como parte publica del usuario, pero se crean y alimentan desde la vista de receta. Al ver una receta publicada, el usuario puede guardarla en una coleccion existente o crear una nueva coleccion sin capturar IDs manuales. Tambien puede decidir si la coleccion sera publica en su perfil.
 
 ### Rating con niveles
 
-El backend calcula niveles permanentes para usuarios segun el rendimiento de sus recetas:
+El frontend muestra el nivel del usuario en su perfil y el badge del nivel funciona como boton hacia `/chef-levels`. Esa pagina explica los 3 niveles, sus requisitos y muestra perfiles demo con 5 recetas que cumplen cada condicion.
 
 - `MAESTRO`: al menos 5 recetas con 100 o mas ratings y promedio superior a 4.
 - `CHEF`: al menos 5 recetas con 100 o mas ratings y promedio superior a 4.5.
 - `KING CHEF`: al menos 5 recetas con 100 o mas ratings y promedio exactamente 5.
 
-El nivel no retrocede aunque cambien los ratings despues.
+El nivel es permanente: una vez alcanzado, no retrocede aunque cambien los ratings despues.
 
 ## Endpoints Usados Por El Frontend
 
