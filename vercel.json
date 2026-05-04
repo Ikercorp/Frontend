@@ -5,6 +5,10 @@
       "destination": "http://68.183.103.116:8000/api/:path*"
     },
     {
+      "source": "/storage/:path*",
+      "destination": "http://68.183.103.116:8000/storage/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
