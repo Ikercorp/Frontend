@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-const apiBaseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const configuredApiBase = import.meta.env.VITE_API_BASE || import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const normalizedApiBase = configuredApiBase.replace(/\/$/, '');
+const apiBaseUrl = normalizedApiBase.endsWith('/api') ? normalizedApiBase : `${normalizedApiBase}/api`;
 
 export const api = axios.create({
-  baseURL: `${apiBaseUrl}/api`, // Backend Laravel
+  baseURL: apiBaseUrl,
   headers: { Accept: 'application/json' },
 });
 

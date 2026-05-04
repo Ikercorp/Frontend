@@ -23,6 +23,33 @@ Crea o revisa el archivo `.env`:
 VITE_API_URL=http://localhost:8000/api
 ```
 
+Para Vercel se recomienda usar una ruta relativa y dejar que `vercel.json` haga proxy al Droplet:
+
+```env
+VITE_API_BASE=/api
+```
+
+El archivo `vercel.json` incluido evita Mixed Content con esta arquitectura:
+
+```txt
+Frontend HTTPS en Vercel -> /api -> rewrite de Vercel -> Backend HTTP en DigitalOcean
+```
+
+Configuracion actual:
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "http://159.203.189.17:8000/api/:path*"
+    }
+  ]
+}
+```
+
+Como el backend ASP.NET expone rutas con prefijo `/api`, el destino tambien conserva `/api/:path*`.
+
 Luego ejecuta el frontend:
 
 ```bash
